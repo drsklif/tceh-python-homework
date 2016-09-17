@@ -1,3 +1,3 @@
 # tceh-python-homework
 
-# test
+# Profession Python developer course homeworks by aildyakov
