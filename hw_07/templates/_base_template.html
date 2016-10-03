@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Blog</title>
+    <link rel="stylesheet" type="text/css" href="/static/main.css">
+    <script type="text/javascript">
+    	function readmore(id, btn) {
+    		var post_hidden = document.getElementById('post_hidden_' + id);
+    		if(post_hidden.style.display != 'inline') {
+    			post_hidden.style.display = 'inline';
+    			btn.innerText = 'Hide';
+    		} else {
+    			post_hidden.style.display = 'none';
+    			btn.innerText = 'Read more';
+    		}
+    	}
+    </script>
+</head>
+<body>
+
+<header>
+	<h1>Welcome to Alexander Ildyakov Flask blog!</h1>
+</header>
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>
