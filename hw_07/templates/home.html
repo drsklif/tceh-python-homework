@@ -12,10 +12,10 @@
                 </h3>
 
                 <div class="post-text">
-                    {{ item.text[0:100] }}
+                    {{ item.text|truncate(100, True, '') }}
                     {% if item.text|length>100 %}
                         <span class="post-hidden" id="post_hidden_{{ item.id }}">
-                        {{ item.text[100:] }}
+                        {{ item.text|reverse|truncate(-100, True, '')|reverse }}
                         </span>
                         <br>
                         <p class="button" onclick="readmore({{ item.id }}, this)">Read more</p>

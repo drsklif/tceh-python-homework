@@ -17,20 +17,21 @@ class Storage(object):
             cls._obj = object.__new__(cls)
             cls.items = []
             try:
-                with open(cls.db_filename, 'rt') as file:
-                    cls.items = json.load(file)
+                with open(cls.db_filename, 'rt') as db:
+                    cls.items = json.load(db)
             except:
-                pass
+                print('Cant load posts from DB')
         return cls._obj
 
     @classmethod
     def save(cls):
         if cls.items is None:
             return
-        def json_default(o):
-            return o.__dict__
-        with open(cls.db_filename, 'wt') as file:
-            json.dump(cls.items, file, default = json_default, indent = 4)
+        try:
+            with open(cls.db_filename, 'wt') as db:
+                json.dump(cls.items, db, default = lambda o: o.__dict__, indent = 4)
+        except:
+             print('Unexpected error occured while saving post to DB')
 
 
 class BlogPostModel(object):

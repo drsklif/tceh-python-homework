@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import re
+
 from flask_wtf import FlaskForm
 from wtforms import StringField, validators, ValidationError
 
@@ -14,6 +16,6 @@ class BlogPostForm(FlaskForm):
         validators.Length(min=10, max=3500),
     ])
     author = StringField(label='Article Author', validators=[
-    	validators.Regexp(u'[a-zA-Zа-яА-ЯёЁ]+\s[a-zA-Zа-яА-ЯёЁ]+[\sa-zA-Zа-яА-ЯёЁ]+', message="Type Author with format 'firstname lastname'"),
+        validators.Regexp(re.compile(r'\w+\s\w+[\s\w]+', re.U), message="Type Author with format 'firstname lastname'"),
         validators.Length(min=3, max=100),
     ])
