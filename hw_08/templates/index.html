@@ -1,0 +1,56 @@
+{% extends '_base_template.html' %}
+
+{% block content %}
+
+    <div class="content">
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class=flashes>
+                    {% for category, message in messages %}
+                        <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        <div class="column-left">
+            <form method="POST" action="{{ url_for('index') }}"
+                  onkeydown="if(event.ctrlKey&&event.keyCode==13)this.submit()">
+                {{ form.hidden_tag() }}
+                {{ form.text.label }}
+                {{ form.text(cols="79", rows="6")|safe }}
+                {% if form.text.errors %}
+                    <ul class=errors>
+                        {% for error in form.text.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <input type="submit" value="Создать код (ctrl+enter)" class="button">
+            </form>
+        </div>
+
+
+        <div class="column-right">
+            <h2>{% if not qr_name %}Здесь будет {% endif %}Ваш QR-code:</h2>
+            <div class="qr-container">
+                {% if qr_name %}
+                    <img src="{{ qr_name }}" alt=""/>
+                {% endif %}
+            </div>
+            {% if qr_name %}
+                <div class="code">
+                    <p>Постояная ссылка на изображение:</p>
+                    <input type="text" value="{{ qr_name }}">
+                </div>
+                <div class="code">
+                    <p>HTML-код для вставки в блог:</p>
+                    <input type="text" value="{{ html_blog }}">
+                </div>
+            {% endif %}
+        </div>
+
+    </div>
+
+{% endblock %}
