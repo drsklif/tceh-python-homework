@@ -3,6 +3,7 @@
 import os
 import os.path
 import pyqrcode
+from uuid import uuid4
 
 from hw_08.config import APP_ROOT
 
@@ -24,11 +25,9 @@ class Storage(object):
             return
 
         try:
-            DIR = os.path.join(APP_ROOT, 'qr-codes')
-            num = 1 + len([name for name in os.listdir(DIR)
-                           if os.path.isfile(os.path.join(DIR, name))])
-            qr_name = 'qr-{}.png'.format(num)
             qr = pyqrcode.create(text)
+            DIR = os.path.join(APP_ROOT, 'qr-codes')
+            qr_name = 'qr-{}.png'.format(uuid4())
             qr.png(os.path.join(DIR, qr_name), scale=5)
             return qr_name
         except:

@@ -15,18 +15,15 @@
         {% endwith %}
 
         <div class="column-left">
+            {% from "macros/render_field.html" import render_field %}
             <form method="POST" action="{{ url_for('index') }}"
                   onkeydown="if(event.ctrlKey&&event.keyCode==13)this.submit()">
                 {{ form.hidden_tag() }}
-                {{ form.text.label }}
-                {{ form.text(cols="79", rows="6")|safe }}
-                {% if form.text.errors %}
-                    <ul class=errors>
-                        {% for error in form.text.errors %}
-                            <li>{{ error }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
+                {% for field in form %}
+                    {% if field.id != 'csrf_token' %}
+                        {{ render_field(field) }}
+                    {% endif %}
+                {% endfor %}
                 <input type="submit" value="Создать код (ctrl+enter)" class="button">
             </form>
         </div>
@@ -48,7 +45,7 @@
                 </div>
                 <div class="code">
                     <p>HTML-код для вставки в блог:</p>
-                    <input type="text" value="{{ html_blog }}">
+                    <input type="text" value="{{ '<img src="{}" width="164" height="164" border="0" title="QR код">'.format(qr_name) }}">
                 </div>
             {% endif %}
         </div>
