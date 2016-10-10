@@ -36,7 +36,9 @@
             <h2>{% if not qr_name %}Здесь будет {% endif %}Ваш QR-code:</h2>
             <div class="qr-container">
                 {% if qr_name %}
-                    <img src="{{ qr_name }}" alt=""/>
+                    <a href="{{ qr_name }}">
+                        <img src="{{ qr_name }}" alt=""/>
+                    </a>
                 {% endif %}
             </div>
             {% if qr_name %}
