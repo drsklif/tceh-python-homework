@@ -6,6 +6,7 @@ from flask_wtf import FlaskForm
 from wtforms import validators
 from wtforms.widgets import TextArea
 from wtforms.ext.sqlalchemy.orm import model_form
+from sqlalchemy.exc import IntegrityError
 
 import re
 import config
@@ -44,11 +45,19 @@ def home():
     if request.method == 'POST':
         form = post_form_class(request.form)
         if form.validate():
-            model = Post(**form.data)
-            db.session.add(model)
-            db.session.commit()
-            flash('Your post added!')
-            return redirect(url_for('home'))
+            try:
+                model = Post(**form.data)
+                db.session.add(model)
+                db.session.commit()
+                flash('Your post added!')
+                return redirect(url_for('home'))
+            except IntegrityError:
+                db.session.rollback()
+                flash('This post is already exist')
+            except Exception as ex:
+                logger.error(ex)
+                db.session.rollback()
+                flash('Cant save post: ' + str(ex))
         else:
             logger.error('Someone have submitted an incorrect form!')
             flash('Invalid form. Please check fields')
