@@ -1,0 +1,162 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:300,300italic,400,400italic,500);
+@import url(reset.css);
+
+body, html {
+  padding:0;
+  margin:0;
+  font:300 18px/1.5 Roboto, "Helvetica Neue", Arial, sans-serif;
+  background:#fff;
+  color:#818181;
+}
+
+strong {
+  font-weight:500;
+  color:#727272;
+}
+
+em {
+  font-style:italic;
+}
+
+a {
+  text-decoration:none;
+  color:#42B6F3;
+  transition:all 0.2s ease;
+}
+
+a:hover, a:focus {
+  color:#222;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight:500;
+  letter-spacing:-1px;
+  line-height:1.1;
+}
+
+p, ul, ol, h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 20px;
+}
+
+h3 {
+  font-size:36px;
+  color:#222;
+}
+
+h3 a {
+  color:#222;
+}
+
+h3 a:hover, h3 a:focus {
+  color:#42B6F3;
+}
+
+h2 {
+  font-size:24px;
+  color:#222;
+}
+
+p.date-author {
+  text-transform:uppercase;
+  font-size:13px;
+  line-height:1;
+}
+
+body {
+  border-top:5px solid #42B6F3;
+  padding:50px 0;
+}
+
+.content {
+  max-width:600px;
+  margin:0 auto;
+  padding:0 20px;
+}
+
+header, .post {
+  display:block;
+  width:100%;
+}
+
+header {
+  font-size:100%;
+  text-align:center;
+}
+
+header h1 {
+  font-size:42px;
+  letter-spacing: 0;
+  margin:0;
+  line-height:1;
+}
+
+.post {
+  margin:50px 0;
+}
+
+.post-hidden {
+	display: none;
+}
+
+.button {
+  display:inline-block;
+  font-weight:500;
+  color:#a5a5a5;
+  cursor: pointer;
+  padding:0 20px;
+  border-radius:18px;
+  height:36px;
+  line-height:36px;
+  border:1px solid #e2e2e2;
+  font-size:13px;
+  margin-top: 10px;
+}
+
+.button-previous:before {
+  content:'←';
+  position:relative;
+  top:-1px;
+  margin-right:8px;
+}
+
+.button-next:after {
+  content:'→';
+  position:relative;
+  top:-1px;
+  margin-left:8px;
+}
+
+.button:hover {
+  color:#42B6F3;
+}
+
+.button-disabled {
+  opacity:0.4;
+}
+
+.button-disabled:hover {
+  color:inherit;
+}
+
+form {
+	margin-top: 30px;
+	padding: 20px 10px;
+	border: 3px solid gray;
+}
+
+form dt {
+	margin-top: 10px;
+}
+
+input[type=text] {
+	width: 95%;
+}
+
+input[type=submit] {
+	margin-top: 20px;
+}
+
+form textarea {
+    width: 95%;
+    height: 100px;
+}
