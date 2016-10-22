@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Homework 12, task 4. Alexander Ildyakov</title>
+
+	<script>
+			function PageLoad() {
+				document.getElementById('btn').onclick = function () {
+					var email = document.getElementById('email').value;
+					if (email.indexOf('@')!=-1) {
+						console.log('Email contains symbol @ 	:)');
+					} else {
+						console.log('Email not contains symbol @ :(');
+					}
+				}
+			}
+	</script>
+</head>
+<body onload="PageLoad()">
+		<div>
+			<div>
+				<input type="text" id="email" name="email">
+			</div>
+			<br/>
+			<div>
+				<input type="button" id="btn" value="Validate email">
+			</div>
+		</div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Homework 12, task 6. Alexander Ildyakov</title>
+  <style>
+    .controls-container {
+      max-width: 1000px;
+    }
+    .controls-container div {
+      display: inline-block;
+      margin: 10px;
+    }
+
+    .results-container {
+      padding: 10px;
+    }
+    .results-container > div {
+      margin-top: 20px;
+    }
+  </style>
+	<script>
+    var LoremIpsum = [
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum aliquet semper tellus quis eleifend. Aenean cursus fermentum enim, sed scelerisque orci fringilla id. Pellentesque imperdiet nisl a elit elementum viverra. Mauris ac pharetra arcu. Sed ligula elit, dapibus vitae imperdiet ut, pretium et est. Morbi sollicitudin leo id tellus gravida commodo. Integer ut lacus at turpis lacinia pharetra. Nam bibendum sem eu libero interdum, sagittis cursus quam tincidunt. Mauris ac ultricies diam. Sed vulputate malesuada lacinia. Aliquam molestie gravida feugiat. Aenean non sem imperdiet nulla scelerisque fermentum non sodales nibh. Ut mi orci, tristique sed felis lacinia, ornare blandit est. Duis viverra facilisis enim sed fringilla. Nunc eget nibh vitae urna sollicitudin cursus.',
+      'Cras nisi dui, commodo vel elementum in, bibendum sed mauris. Aliquam facilisis elit ac nunc aliquet aliquam. Duis est odio, rhoncus id euismod ut, tempor nec nulla. Nunc in vehicula lectus. Aenean eleifend sodales urna ac iaculis. Integer eget augue sit amet ex posuere aliquam et et metus. Aliquam nec elit eget augue placerat molestie. Aliquam at accumsan mauris. Proin id massa id ipsum porta pretium. Nulla rutrum, dui a aliquet accumsan, felis quam semper tortor, a laoreet massa lorem et ex. Morbi ultricies est in aliquet mattis. Donec a enim eleifend, malesuada justo non, lobortis tortor. Mauris sit amet quam in erat laoreet gravida. Donec ac nulla tellus. Fusce laoreet cursus pretium.',
+      'Nam rutrum leo elit, at hendrerit tellus venenatis euismod. Proin pellentesque augue porttitor sem vehicula, id condimentum turpis efficitur. Fusce rhoncus quis erat et tincidunt. Curabitur varius justo sed mi elementum, ac viverra odio rhoncus. Aliquam sit amet cursus tortor. Nam sit amet nunc venenatis, elementum magna eget, venenatis dolor. Nullam euismod eleifend augue, non accumsan mauris iaculis eget. Curabitur a elit a lectus auctor fringilla nec id quam. Pellentesque magna erat, molestie et cursus non, faucibus ac turpis. Pellentesque rutrum mollis risus, non dignissim purus hendrerit eu. Nulla facilisi. Quisque mollis ligula eu eros commodo, a pretium est auctor. Proin vel vulputate erat. Integer accumsan feugiat egestas. Mauris mi mi, sodales quis tristique et, aliquam sed nibh. Suspendisse varius ipsum sem.',
+      'Nam erat ante, gravida ac aliquam vel, auctor quis nunc. Sed viverra metus a erat lacinia, id pellentesque sem sodales. Fusce nec libero ac lorem consectetur finibus at ac neque. Ut fermentum leo et fringilla euismod. Quisque in nibh ultrices, convallis est id, consequat magna. Proin a risus lobortis, molestie erat et, dictum quam. Integer vehicula arcu at pellentesque elementum. Vivamus tempor sodales sapien. Nulla a faucibus felis. Morbi eleifend sed neque quis varius. Aliquam sit amet iaculis lectus. Proin interdum nisl vitae lorem pretium, non varius arcu hendrerit. Suspendisse fringilla quam ex, sit amet rhoncus nunc aliquam vitae. Praesent eget felis a ligula sodales viverra ac in dui.',
+      'Pellentesque gravida nibh a sem euismod, sed congue turpis mattis. Ut dignissim tincidunt faucibus. Proin iaculis mauris velit, eu aliquet elit ullamcorper sit amet. Maecenas non pellentesque odio. In erat eros, dapibus a faucibus ut, hendrerit et velit. Duis facilisis venenatis odio in pretium. Pellentesque ultrices accumsan mi, at lacinia dolor aliquam sed. Praesent faucibus facilisis venenatis.'
+    ];
+
+    function PageLoad() {
+      document.getElementById('btn_add').onclick = function() {
+        var
+          results = document.getElementsByClassName('results-container')[0],
+          pcount = 1 + Math.floor(Math.random() * 5),
+          div = document.createElement('div');
+
+          for (var i = 0; i < pcount; i++) {
+            var
+              p = document.createElement('p'),
+              text = document.createTextNode(LoremIpsum[i]);
+            p.appendChild(text);
+            div.appendChild(p);
+          }
+
+          results.appendChild(div);
+      }
+
+      document.getElementById('btn_clear').onclick = function() {
+        var results = document.getElementsByClassName('results-container')[0];
+        while (results.firstChild) {
+          results.removeChild(results.firstChild);
+        }
+      }
+    }
+	</script>
+</head>
+<body onload="PageLoad()">
+		<div class="controls-container">
+      <div>
+        <button id="btn_add">Добавить</button>
+      </div>
+      <div>
+        <button id="btn_clear">Очистить</button>
+      </div>
+		</div>
+
+    <div class="results-container"></div>
+</body>
+</html>

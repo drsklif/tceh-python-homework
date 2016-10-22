@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Homework 12, task 5. Alexander Ildyakov</title>
+  <style>
+    .image-container {
+      max-width: 1000px;
+    }
+    .image-container::after {
+      visibility: hidden;
+      display: block;
+      content: '';
+      clear: both;
+      height: 0;
+    }
+    .image-container img {
+      width: 250px;
+      height: 250px;
+      float: left;
+      margin: 10px;
+    }
+
+    .results-container {
+      display: none;
+      padding: 10px;
+    }
+    .results-container > div {
+      margin-top: 5px;
+    }
+  </style>
+	<script>
+			function PageLoad() {
+        var
+          images = document.getElementsByTagName('img'),
+          total = images.length,
+          withAlt = 0,
+          withTitle = 0;
+
+        for (var i = 0; i < total; i++) {
+          var img = images[i];
+          if (img.hasAttribute('alt')) withAlt++;
+          if (img.hasAttribute('title')) withTitle++;
+        }
+
+        var
+          withAltPC = (100 * withAlt / total).toFixed(2),
+          withTitlePC = (100 * withTitle / total).toFixed(2);
+
+        console.log('Total images: ' + total + '; Images with alt: ' + withAlt + ' (' + withAltPC +' %)' + '; Images with title: ' + withTitle + ' (' + withTitlePC +' %)');
+
+        document.getElementById('imagesTotal').innerText = total;
+        document.getElementById('imagesNoAlt').innerText = withAltPC + ' %';
+        document.getElementById('imagesNoTitle').innerText = withTitlePC + ' %';
+
+        document.getElementsByClassName('results-container')[0].style.display = 'block';
+			}
+	</script>
+</head>
+<body onload="PageLoad()">
+		<div class="image-container">
+			<img src="https://unsplash.it/250?random&1" alt="">
+      <img src="https://unsplash.it/250?random&2" title="">
+      <img src="https://unsplash.it/250?random&3" alt="" title="">
+
+      <img src="https://unsplash.it/250?random&4" alt="" title="">
+      <img src="https://unsplash.it/250?random&5" title="">
+      <img src="https://unsplash.it/250?random&6">
+
+      <img src="https://unsplash.it/250?random&7" title="">
+      <img src="https://unsplash.it/250?random&8" alt="">
+      <img src="https://unsplash.it/250?random&9" alt="" title="">
+		</div>
+
+    <div class="results-container">
+      <div>Всего изображений: <span id="imagesTotal"></span></div>
+      <div>Изображений без alt: <span id="imagesNoAlt"></span></div>
+      <div>Изображений без title: <span id="imagesNoTitle"></span></div>
+    </div>
+</body>
+</html>

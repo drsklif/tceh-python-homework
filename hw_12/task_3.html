@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Homework 12, task 3. Alexander Ildyakov</title>
+
+	<script>
+			function ButtonManager() {
+				this.i = 0;
+				this.click = function() {
+					this.i++;
+					console.log('Button clicks count: ' + this.i);
+					document.getElementById('clickResult').innerText = this.i;
+				}
+			}
+
+			function PageLoad() {
+				var buttonManager = new ButtonManager();
+				document.getElementById('btn').onclick = function () {
+					buttonManager.click();
+				}
+			}
+	</script>
+</head>
+<body onload="PageLoad()">
+		<div>
+			<input type="button" id="btn" value="Button to click">
+			<br/><br/>
+			<div>
+				Button clicks count: <span id="clickResult">0</span>
+			</div>
+		</div>
+</body>
+</html>
