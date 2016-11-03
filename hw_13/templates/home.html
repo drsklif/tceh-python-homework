@@ -1,0 +1,79 @@
+{% extends '_base_template.html' %}
+
+{% block content %}
+
+<div class="content">
+    <div class="posts">
+        {% for item in items %}
+            <div class="post" id="post_{{ item.id }}" data-post_id="{{ item.id }}">
+                <p class="date">{{ item.time_stamp.strftime('%Y-%m-%d %H:%M') }} <strong>{{ item.author }}</strong></p>
+                <h3 class="post-title">
+                    {{ item.title }}
+                </h3>
+
+                <div class="post-text">
+                    {{ item.text|truncate(100, True, '') }}
+                    {% if item.text|length>100 %}
+                        <span class="post-hidden" id="post_hidden_{{ item.id }}">
+                        {{ item.text|reverse|truncate(-100, True, '')|reverse }}
+                        </span>
+                        <br>
+                        <p class="button" onclick="readmore({{ item.id }}, this)">Read more</p>
+                    {% endif %}
+                </div>
+                {% if item.comments != None %}
+                <div class="post-comments">
+                    {% for comment in item.comments %}
+                        <div class="comment">
+                            <p class="comment-text">{{ comment.text }}</p>
+                            <p class="comment-author">{{ comment.author }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <a class="button button-comment" href="#comment_form">Comment</a>
+            </div>
+
+        {% endfor %}
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class=flashes>
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    {% from "macros/render_field.html" import render_field %}
+    <form method="POST" action="{{ url_for('blog.home') }}">
+        {{ form.hidden_tag() }}
+        <dl>
+            {% for field in form %}
+                {% if field.id != 'csrf_token' %}
+                    {{ render_field(field) }}
+                {% endif %}
+            {% endfor %}
+        </dl>
+
+        <input type="submit" value="{{ 'Submit' }}" class="btn">
+    </form>
+
+    <form method="POST" action="{{ url_for('blog.post_comment') }}" id="comment_form" class="white-popup-block mfp-hide">
+        {{ comments_form.hidden_tag() }}
+        <dl>
+            {% for field in comments_form %}
+                {% if field.id != 'csrf_token' and field.id != 'post_id' %}
+                    {{ render_field(field) }}
+                {% endif %}
+            {% endfor %}
+        </dl>
+
+        <input type="submit" value="Add comment" class="btn">
+    </form>
+
+</div>
+
+{% endblock %}

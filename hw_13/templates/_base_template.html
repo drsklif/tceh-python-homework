@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Blog</title>
+    <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/main.css">
+    <script type="text/javascript">
+    	function readmore(id, btn) {
+    		var post_hidden = document.getElementById('post_hidden_' + id);
+    		if(post_hidden.style.display != 'inline') {
+    			post_hidden.style.display = 'inline';
+    			btn.innerText = 'Hide';
+    		} else {
+    			post_hidden.style.display = 'none';
+    			btn.innerText = 'Read more';
+    		}
+    	}
+    </script>
+</head>
+<body>
+
+<header>
+	<h1>Welcome to Alexander Ildyakov Flask blog!</h1>
+</header>
+
+{% block content %}
+{% endblock %}
+
+<script type="application/javascript" src="http://yastatic.net/jquery/2.2.3/jquery.min.js"></script>
+<script type="application/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+<script type="application/javascript" src="/static/main.js"></script>
+</body>
+</html>
