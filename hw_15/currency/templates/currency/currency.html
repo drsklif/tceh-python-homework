@@ -1,0 +1,41 @@
+{% extends "_base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/currency.min.css' %}">
+{%endblock%}
+
+{%block nav_currency%} active{%endblock%}
+
+{% block content %}
+    <h1>Currency graph task</h1>
+
+    <div class="row">
+        <div class='col-sm-6'>
+            <form action="{% url 'currency' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <div class='input-group date' id='datetimepicker1'>
+                        {{ form.date_to|add_class:"form-control" }}
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="graph"></div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/highstock.min.js' %}"></script>
+    <script>
+        var quotes = {{ quotes  }};
+    </script>
+    <script src="{% static 'js/currency.min.js' %}"></script>
+{% endblock %}

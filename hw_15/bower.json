@@ -1,0 +1,23 @@
+{
+  "name": "hw15",
+  "description": "tceh python homework 15",
+  "main": "",
+  "authors": [
+    "ildyakov"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "eonasdan-bootstrap-datetimepicker": "^4.17.43",
+    "jquery.maskedinput": "^1.4.1",
+    "highcharts": "^5.0.2"
+  }
+}

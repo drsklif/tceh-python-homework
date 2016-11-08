@@ -1,0 +1,15 @@
+{% extends "_base.html" %}
+
+{%block nav_index%} active{%endblock%}
+
+{% block content %}
+        <div class="starter-template">
+            <h1>Homework 15 tasks</h1>
+            <ul>
+                <li><a href="{% url "currency" %}"><b>Currency graph task</b></a></li>
+                <li><a href="{% url "lecture" %}">1. Task from lecture</a></li>
+                <li><a href="{% url "passport" %}">2. Passport validation</a></li>
+                <li><a href="{% url "contacts" %}">3. Contacts</a></li>
+            </ul>
+        </div>
+{% endblock %}

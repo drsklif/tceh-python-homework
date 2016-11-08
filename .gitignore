@@ -94,3 +94,7 @@ ENV/
 
 #kubuntu files
 .directory
+
+#builders
+bower_components/
+node_modules/

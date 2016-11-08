@@ -1,0 +1,33 @@
+{% extends "_base.html" %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/contacts.min.css' %}">
+{% endblock %}
+
+{%block nav_contacts%} active{%endblock%}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <h2>Контакты</h2>
+            <div id="map"></div>
+            <div class="spacer"></div>
+            <div class="well">
+                <p><b>Адрес:</b> РФ, г. Новосибирск</p>
+                <p><b>Телефон:</b> (383) 999-99-99</p>
+                <p><b>тел./факс:</b> (383) 999-99-99</p>
+                <p><b>Email:</b> <a href="mailto:contacts@test.ru">contacts@test.ru</a></p>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static "js/contacts.min.js" %}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+{% endblock %}

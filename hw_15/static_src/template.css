@@ -1,0 +1,44 @@
+body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.starter-template ul li {
+  list-style-type: none;
+}
+
+form label {
+  width: 160px;
+}
+
+form input[type=text], form input[type=number], form select, form select.form-control {
+  width: 200px;
+}
+
+.label {
+    color: black;
+    text-align: left;
+}
+
+.messages, .errorlist {
+    list-style-type: none;
+    font-weight: 500;
+    color: limegreen;
+    -webkit-padding-start: 0;
+}
+
+.messages {
+    color: limegreen;
+}
+
+.errorlist {
+    color: red;
+    margin-top: 5px;
+}
+
+.messages .error {
+  color: red;
+}
